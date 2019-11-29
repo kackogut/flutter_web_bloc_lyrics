@@ -25,8 +25,6 @@ class LyricsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var data = EasyLocalizationProvider.of(context).data;
-
     return  MultiBlocProvider(
         providers: [
           BlocProvider<SongAddEditBloc>(

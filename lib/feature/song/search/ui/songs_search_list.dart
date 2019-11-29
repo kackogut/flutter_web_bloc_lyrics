@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_lyrics/feature/song/details/song_details_screen.dart';
 import 'package:flutter_bloc_lyrics/feature/song/search/bloc/songs_search.dart';
 import 'package:flutter_bloc_lyrics/model/song_base.dart';
+import 'dart:js' as js;
 import 'package:flutter_bloc_lyrics/resources/langs/strings.dart';
 
 class SongsSearchList extends StatelessWidget {
@@ -88,10 +89,14 @@ class _SongSearchResultItem extends StatelessWidget {
                 ),
           title: Text(song.title),
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SongDetailsScreen(song)));
+            if(song.lyricsURL != null){
+              js.context.callMethod("open", [song.lyricsURL]);
+            } else {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SongDetailsScreen(song)));
+            }
           },
         ));
   }
