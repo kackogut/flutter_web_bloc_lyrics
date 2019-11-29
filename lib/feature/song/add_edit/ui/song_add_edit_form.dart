@@ -52,26 +52,26 @@ class SongAddState extends State<SongAddForm> {
                   children: <Widget>[
                     TextFormField(
                       initialValue: _song != null ? _song.title : "",
-                      decoration: InputDecoration(hintText: AppLocalizations.of(context).tr(S.TITLE)),
+                      decoration: InputDecoration(hintText: "Title"),
                       onSaved: (value) => _title = value,
                       validator: (val) {
-                        return val.trim().isEmpty ? S.EMPTY_TITLE : null;
+                        return val.trim().isEmpty ? "Empty title" : null;
                       },
                     ),
                     TextFormField(
                       initialValue: _song != null ? _song.artist : "",
-                      decoration: InputDecoration(hintText: AppLocalizations.of(context).tr(S.ARTIST)),
+                      decoration: InputDecoration(hintText: "Artist"),
                       onSaved: (value) => _artist = value,
                       validator: (val) {
-                        return val.trim().isEmpty ? S.EMPTY_ARTIST : null;
+                        return val.trim().isEmpty ? "Empty title" : null;
                       },
                     ),
                     TextFormField(
                       initialValue: _song != null ? _song.lyrics : "",
-                      decoration: InputDecoration(hintText: AppLocalizations.of(context).tr(S.LYRICS)),
+                      decoration: InputDecoration(hintText: "Lyrics"),
                       onSaved: (value) => _lyrics = value,
                       validator: (val) {
-                        return val.trim().isEmpty ? S.EMPTY_LYRICS : null;
+                        return val.trim().isEmpty ? "Empty title" : null;
                       },
                       minLines: 5,
                       maxLines: 20,
@@ -93,7 +93,7 @@ class SongAddState extends State<SongAddForm> {
                                     : EditSong(song: updatedSong));
                               }
                             },
-                            text: AppLocalizations.of(context).tr(_song != null ? S.EDIT : S.ADD_SONG)))
+                            text: _song != null ? "Edit" : "Add song"))
                   ],
                 ))));
   }

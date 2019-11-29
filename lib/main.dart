@@ -27,9 +27,7 @@ class LyricsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var data = EasyLocalizationProvider.of(context).data;
 
-    return EasyLocalizationProvider(
-      data: data,
-      child: MultiBlocProvider(
+    return  MultiBlocProvider(
         providers: [
           BlocProvider<SongAddEditBloc>(
             builder: (context) =>
@@ -42,18 +40,7 @@ class LyricsApp extends StatelessWidget {
           ),
         ],
           child: MaterialApp(
-              localizationsDelegates: [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                EasylocaLizationDelegate(
-                    locale: data.locale,
-                    path: 'lib/resources/langs'),
-              ],
-              supportedLocales: [Locale('en', 'US')],
-              locale: data.savedLocale,
               theme: ThemeData(primaryColor: Colors.blue),
-              home: SearchScreen()))
-      ,
-    );
+              home: SearchScreen()));
        }
 }
